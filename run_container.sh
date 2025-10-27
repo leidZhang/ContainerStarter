@@ -61,7 +61,7 @@ if [ "$(docker ps -aq -f name="$CONTAINER_NAME")" ]; then
 else
     # No existing container found, create a new one
     echo "No existing container found. Creating a new one..."
-    docker run -it --rm \
+    docker run -it \
     "${MOUNT_ARGS[@]}" \
     $DISPLAY_FLAG \
     --network host \

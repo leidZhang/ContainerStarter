@@ -1,12 +1,17 @@
 import sys
+import argparse
 from typing import List
 
 import yaml
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Parse docker container config")
+    parser.add_argument("--config", default="configs.yaml", help="Path to the config file")
+    args = parser.parse_args()
+
     path = sys.path[0]
     
-    with open(f"{path}/configs.yaml", "r") as file:
+    with open(f"{path}/{args.config}", "r") as file:
         config: dict = yaml.safe_load(file)
 
     base_dir_host: str = config.get("base_dir_host", "")

@@ -1,0 +1,8 @@
+base_dir_host: "/home/sdcnlab025/Hao" # Replace with your own workspace
+base_dir_container: "/workspace" # Replace with your own workspace
+
+mount_dirs: 
+- "ros2_projects" # Replace with your own dirs
+
+image_id: "e086abb55dd1" # Replace with your own docker image id
+container_name: "ros2_container" # Replace with your own name

@@ -2,15 +2,21 @@
 # Default configuration file
 CONFIG_FILE="configs.yaml"
 # Parse command-line arguments using getopt
-PARSED_ARGS=$(getopt -o c: --long config: -- "$@")
+# PARSED_ARGS=$(getopt -o c: --long config: -- "$@")
+PARSED_ARGS=$(getopt -o c: --long config:,display -- "$@")
 eval set -- "$PARSED_ARGS"
 
 # Process options
+DISPLAY_FLAG=""
 while true; do
   case "$1" in
     -c | --config)
       CONFIG_FILE="$2"
       shift 2
+      ;;
+    --display)
+      DISPLAY_FLAG="-v /tmp/.X11-unix:/tmp/.X11-unix:rw -e DISPLAY=$DISPLAY"
+      shift
       ;;
     --)
       shift
@@ -23,6 +29,7 @@ while true; do
   esac
 done
 
+echo "Display flag set to: $DISPLAY_FLAG"
 echo "Using configuration file: $CONFIG_FILE"
 SCRIPT_DIR="$(dirname "$(realpath "$0")")"
 
@@ -54,8 +61,9 @@ if [ "$(docker ps -aq -f name="$CONTAINER_NAME")" ]; then
 else
     # No existing container found, create a new one
     echo "No existing container found. Creating a new one..."
-    docker run -it \
+    docker run -it --rm \
     "${MOUNT_ARGS[@]}" \
+    $DISPLAY_FLAG \
     --network host \
     --name "$CONTAINER_NAME" \
     "$IMAGE_ID" \

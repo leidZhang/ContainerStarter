@@ -15,6 +15,7 @@ Before running the container, open configs.yaml and configure your settings:
 2. Configure your Docker container in `configs.yaml`.
 3. Run the script: `bash run_container.sh`
 4. Your Docker container is now running and your host files are mounted.
+   
 <b>Tip</b>: You can open another terminal and run bash run_container.sh again. It will connect to the same running container.
 
 ## Notes

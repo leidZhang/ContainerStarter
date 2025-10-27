@@ -16,8 +16,9 @@ Before running the container, open configs.yaml and configure your settings:
 3. Run the script: `bash run_container.sh`
 4. Your Docker container is now running and your host files are mounted.
    
-<b>Tip</b>: You can open another terminal and run bash run_container.sh again. It will connect to the same running container.
+<b>Tip 1</b>: You can open another terminal and run bash run_container.sh again. It will connect to the same running container.
 
+<b>Tip 2</b>: You can run `bash run_container.sh --config=path/to/your/config.yaml` to start another container. Replace `path/to/your/config.yaml` with the path to your desired YAML configuration file. This allows you to start a container with custom settings defined in the specified configuration.
 ## Notes
 - Make sure Docker is installed and running on your system.
 - Make sure python3 is installed on your system, the project requires python to read the yaml file.

@@ -14,7 +14,7 @@ for dir in "${mount_dirs[@]}"; do
     MOUNT_ARGS+=("-v" "$dir")
 done
 
-echo "Configuration complete. Starting attempting to container..."
+echo "Configuration complete. Attempting to container..."
 # Check if a container with the same name is already running
 if [ "$(docker ps -aq -f name="$CONTAINER_NAME")" ]; then
     echo "Container with name $CONTAINER_NAME already exists. "

@@ -20,7 +20,7 @@ Before running the container, open configs.yaml and configure your settings:
 
 <b>Tip 2</b>: You can run `bash run_container.sh --config=path/to/your/config.yaml` to start another container. Replace `path/to/your/config.yaml` with the path to your desired YAML configuration file. This allows you to start a container with custom settings defined in the specified configuration.
 ## Use GUI inside Container
-1. To grant access to the X11 Server, run `xhost +`
+1. To grant access to the X11 Server, run `xhost +local`
 2. Run the Script with the `--display` Option, for example `bash run_container.sh --display`
 
 ## Notes

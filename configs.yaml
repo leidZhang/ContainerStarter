@@ -1,8 +1,0 @@
-base_dir_host: "" # Replace with your own workspace
-base_dir_container: "/workspace" # Replace with your own workspace
-
-mount_dirs: 
-- "" # Replace with your own dirs
-
-image_id: "" # Replace with your own docker image id
-container_name: "" # Replace with your own name

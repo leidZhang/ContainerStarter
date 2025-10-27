@@ -1,7 +1,32 @@
 #!/usr/bin/env bash
+# Default configuration file
+CONFIG_FILE="configs.yaml"
+# Parse command-line arguments using getopt
+PARSED_ARGS=$(getopt -o c: --long config: -- "$@")
+eval set -- "$PARSED_ARGS"
+
+# Process options
+while true; do
+  case "$1" in
+    -c | --config)
+      CONFIG_FILE="$2"
+      shift 2
+      ;;
+    --)
+      shift
+      break
+      ;;
+    *)
+      echo "Unknown option: $1"
+      exit 1
+      ;;
+  esac
+done
+
+echo "Using configuration file: $CONFIG_FILE"
 SCRIPT_DIR="$(dirname "$(realpath "$0")")"
 
-eval "$(python3 $SCRIPT_DIR/parse_config.py)"
+eval "$(python3 $SCRIPT_DIR/parse_config.py --config $CONFIG_FILE)"
 echo "Using image ID: $IMAGE_ID"
 echo "Got mounted paths: $MOUNT_DIRS"
 echo "Using container name: $CONTAINER_NAME"

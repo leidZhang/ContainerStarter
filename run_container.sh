@@ -65,6 +65,7 @@ else
     "${MOUNT_ARGS[@]}" \
     $DISPLAY_FLAG \
     --network host \
+    --gpus all \
     --name "$CONTAINER_NAME" \
     "$IMAGE_ID" \
     bash
